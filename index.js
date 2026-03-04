@@ -16,3 +16,13 @@ app.get('/api/books', (req, res) => {
 app.listen(port, () => {
     console.log(`✅ Server is running on http://localhost:${port}`);
 });
+app.get('/', (req, res) => {
+    res.send("Welcome to the BookHaven API! Go to /api/books to see the data.");
+});
+const path = require('path'); // Add this at the top of index.js
+
+app.get('/home', (req, res) => {
+    // This sends the actual file to the browser
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
