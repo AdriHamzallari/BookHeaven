@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BookHaven - Cart</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+<nav>
+  <h1>📚 BookHaven</h1>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-btn">Home</a></li>
+    <li><a href="book.html" class="nav-btn">Browse</a></li>
+    <li><a href="wishlist.html" class="nav-btn">Wishlist</a></li>
+    <li><a href="library.html" class="nav-btn">Library</a></li>
+    <li><a href="cart.html" class="nav-btn active">Cart</a></li>
+    <li><a href="profile.html" class="nav-btn">Profile</a></li>
+  </ul>
+</nav>
+
+<section class="cart-page">
+
+  <h1 class="page-title">Your Cart</h1>
+  <div class="cart-summary">
+    <strong>3 items</strong> • Total: <strong>$62.29</strong>
+  </div>
+
+  <!-- Filled cart example -->
+  <div class="cart-items">
+
+    <div class="cart-item">
+      <div class="item-cover">📕</div>
+      <div class="item-info">
+        <h4>The Silent Echo</h4>
+        <div class="item-author">Jane Harper</div>
+        <div class="item-price">$19.99</div>
+        <div class="quantity">
+          <button>–</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+        <button class="remove-btn">Remove</button>
+      </div>
+    </div>
+
+    <div class="cart-item">
+      <div class="item-cover">📘</div>
+      <div class="item-info">
+        <h4>Midnight Horizon</h4>
+        <div class="item-author">Elena Voss</div>
+        <div class="item-price">$24.50</div>
+        <div class="quantity">
+          <button>–</button>
+          <span>2</span>
+          <button>+</button>
+        </div>
+        <button class="remove-btn">Remove</button>
+      </div>
+    </div>
+
+    <div class="cart-item">
+      <div class="item-cover">📗</div>
+      <div class="item-info">
+        <h4>The Dry</h4>
+        <div class="item-author">Jane Harper</div>
+        <div class="item-price">$17.80</div>
+        <div class="quantity">
+          <button>–</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+        <button class="remove-btn">Remove</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cart-total">
+    <h3>Order Summary</h3>
+    <div>Subtotal <span>$62.29</span></div>
+    <div>Shipping <span>Free</span></div>
+    <div class="total-line">Total <span>$62.29</span></div>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+
+  <!-- Empty cart – uncomment when needed -->
+  <!--
+  <div class="empty-cart">
+    <h2>Your cart is empty</h2>
+    <p>Looks like you haven't added anything yet.<br>Start browsing and add your favorite books!</p>
+    <a href="books.html" class="btn-shop">Shop Now</a>
+  </div>
+  -->
+
+</section>
+
+<footer>
+  © 2026 BookHaven. Crafted for readers who love stories.
+</footer>
+
+</body>
+</html>

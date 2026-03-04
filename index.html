@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BookHaven - Home</title>
+<link rel="stylesheet" href="css/index.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+</style>
+</head>
+<body>
+<nav>
+  <h1>📚 BookHaven</h1>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-btn active">Home</a></li>
+    <li><a href="browse.html" class="nav-btn">Browse</a></li>
+    <li><a href="wishlist.html" class="nav-btn">Wishlist</a></li>
+    <li><a href="library.html" class="nav-btn">Library</a></li>
+    <li><a href="cart.html" class="nav-btn cart-badge">Cart</a></li>
+    <li><a href="profile.html" class="nav-btn">Profile</a></li>
+  </ul>
+</nav>
+<section class="hero">
+  <div class="hero-text">
+    <h2>Where Stories Feel Alive</h2>
+    <p>A sanctuary for readers who crave depth, imagination, and late-night chapters under quiet light. Discover thousands of books across every genre imaginable.</p>
+    <div class="buttons">
+      <button class="btn btn-primary">Explore Collection</button>
+      <button class="btn btn-outline">My Library</button>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-placeholder">📖</div>
+  </div>
+</section>
+<section class="search-section">
+  <div class="search-bar">
+    <input type="text" placeholder="Search by title, author, or ISBN..." id="search-input">
+    <button id="search-btn">Search</button>
+  </div>
+</section>
+<section class="stats">
+  <div class="stat-card"><div class="stat-icon">📚</div><div class="stat-number" id="total-books">0</div><div class="stat-label">Books Available</div></div>
+  <div class="stat-card"><div class="stat-icon">❤️</div><div class="stat-number" id="wishlist-count">0</div><div class="stat-label">In Wishlist</div></div>
+  <div class="stat-card"><div class="stat-icon">🛒</div><div class="stat-number" id="cart-count">0</div><div class="stat-label">In Cart</div></div>
+  <div class="stat-card"><div class="stat-icon">📖</div><div class="stat-number" id="library-count">0</div><div class="stat-label">Books Owned</div></div>
+</section>
+<section class="books">
+  <div class="section-header"><h2 class="section-title">Featured Books</h2><a href="books.html" class="view-all">View All →</a></div>
+  <div class="grid" id="featured-books">
+    <div class="card"><div class="book-cover">📕</div><h3>The Silent Echo</h3><p class="author">Jane Harper</p><div class="card-footer"><span class="price">$19.99</span><span class="rating">⭐ 4.5</span></div><div class="card-actions"><button class="icon-btn">❤️</button><button class="icon-btn">🛒</button></div></div>
+    <div class="card"><div class="book-cover">📘</div><h3>Midnight Horizon</h3><p class="author">Elena Voss</p><div class="card-footer"><span class="price">$24.50</span><span class="rating">⭐ 4.8</span></div><div class="card-actions"><button class="icon-btn">❤️</button><button class="icon-btn">🛒</button></div></div>
+    <div class="card"><div class="book-cover">📗</div><h3>Fragments of Time</h3><p class="author">Adrian Cole</p><div class="card-footer"><span class="price">$17.80</span><span class="rating">⭐ 4.3</span></div><div class="card-actions"><button class="icon-btn">❤️</button><button class="icon-btn">🛒</button></div></div>
+    <div class="card"><div class="book-cover">📙</div><h3>Dreams of Dusk</h3><p class="author">Lina Moris</p><div class="card-footer"><span class="price">$21.00</span><span class="rating">⭐ 4.6</span></div><div class="card-actions"><button class="icon-btn">❤️</button><button class="icon-btn">🛒</button></div></div>
+  </div>
+</section>
+<section class="categories">
+  <div class="section-header"><h2 class="section-title">Browse by Category</h2></div>
+  <div class="categories-grid">
+    <div class="category-card"><div class="category-icon">📖</div><h3>Fiction</h3><p>Explore imaginative worlds</p></div>
+    <div class="category-card"><div class="category-icon">🔬</div><h3>Science</h3><p>Discover the universe</p></div>
+    <div class="category-card"><div class="category-icon">🏛️</div><h3>History</h3><p>Learn from the past</p></div>
+    <div class="category-card"><div class="category-icon">👤</div><h3>Biography</h3><p>Inspiring life stories</p></div>
+    <div class="category-card"><div class="category-icon">💻</div><h3>Technology</h3><p>Future & innovation</p></div>
+    <div class="category-card"><div class="category-icon">🎨</div><h3>Art & Design</h3><p>Creative masterpieces</p></div>
+  </div>
+</section>
+<footer>
+  <div class="footer-content">
+    <div class="footer-section"><h3>BookHaven</h3><p>Your one-stop destination for discovering and purchasing books across all genres.</p><div class="social-icons"><a href="#" class="social-icon">f</a><a href="#" class="social-icon">t</a><a href="#" class="social-icon">in</a><a href="#" class="social-icon">g</a></div></div>
+    <div class="footer-section"><h3>Quick Links</h3><ul class="footer-links"><li><a href="books.html">Browse Books</a></li><li><a href="wishlist.html">Wishlist</a></li><li><a href="library.html">My Library</a></li><li><a href="profile.html">Profile</a></li></ul></div>
+    <div class="footer-section"><h3>Categories</h3><ul class="footer-links"><li><a href="#">Fiction</a></li><li><a href="#">Science</a></li><li><a href="#">History</a></li><li><a href="#">Technology</a></li></ul></div>
+    <div class="footer-section"><h3>Support</h3><ul class="footer-links"><li><a href="#">Help Center</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 BookHaven. Crafted for readers who love stories.</div>
+</footer>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
