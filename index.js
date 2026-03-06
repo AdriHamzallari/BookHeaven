@@ -19,10 +19,9 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.send("Welcome to the BookHaven API! Go to /api/books to see the data.");
 });
-const path = require('path'); // Add this at the top of index.js
+const path = require('path');
 
 app.get('/home', (req, res) => {
-    // This sends the actual file to the browser
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
