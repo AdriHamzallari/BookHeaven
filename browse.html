@@ -3,154 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BookHaven - Browse</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>BookHaven – Browse</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/browse.css">
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <h1>📚 BookHaven</h1>
   <ul class="nav-links">
-    <li><a href="index.html" class="nav-btn">Home</a></li>
-    <li><a href="book.html" class="nav-btn active">Browse</a></li>
+    <li><a href="index.html"    class="nav-btn">Home</a></li>
+    <li><a href="browse.html"   class="nav-btn active">Browse</a></li>
     <li><a href="wishlist.html" class="nav-btn">Wishlist</a></li>
-    <li><a href="library.html" class="nav-btn">Library</a></li>
-    <li><a href="cart.html" class="nav-btn">Cart</a></li>
-    <li><a href="profile.html" class="nav-btn">Profile</a></li>
+    <li><a href="library.html"  class="nav-btn">Library</a></li>
+    <li><a href="cart.html"     class="nav-btn">Cart</a></li>
+    <li><a href="profile.html"  class="nav-btn">Profile</a></li>
   </ul>
 </nav>
 
-<div class="container">
-
-  <aside class="sidebar">
-    <div class="search-box">
-      <input type="text" placeholder="Search...">
-      <button>Search</button>
+<!-- PAGE HEADER -->
+<header class="browse-header">
+  <div class="browse-header-inner">
+    <div>
+      <h2 class="browse-title">Browse Collection</h2>
+      <p class="browse-sub">Discover your next favourite read</p>
     </div>
+    <!-- SEARCH BAR -->
+    <div class="search-wrap">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search by title, author, ISBN…">
+        <button id="searchBtn">Search</button>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <div class="filters">
-      <h3>Filters</h3>
+<!-- MAIN LAYOUT -->
+<div class="layout">
 
-      <div class="filter-section">
-        <strong>Genre</strong>
-        <label><input type="checkbox"> Fiction</label>
-        <label><input type="checkbox"> Mystery</label>
-        <label><input type="checkbox"> Sci-Fi</label>
-        <label><input type="checkbox"> Fantasy</label>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+
+      <div class="sidebar-section">
+        <h4 class="sidebar-label">Category</h4>
+        <div class="chip-group" id="categoryChips">
+          <button class="chip active" data-value="all">All</button>
+          <button class="chip" data-value="classic">Classic</button>
+          <button class="chip" data-value="fiction">Fiction</button>
+          <button class="chip" data-value="mystery">Mystery</button>
+          <button class="chip" data-value="scifi">Sci-Fi</button>
+          <button class="chip" data-value="fantasy">Fantasy</button>
+          <button class="chip" data-value="thriller">Thriller</button>
+          <button class="chip" data-value="romance">Romance</button>
+          <button class="chip" data-value="nonfiction">Non-Fiction</button>
+        </div>
       </div>
 
-      <div class="filter-section">
-        <strong>Rating</strong>
-        <label><input type="checkbox"> 4+ Stars</label>
-        <label><input type="checkbox"> 3+ Stars</label>
+      <div class="sidebar-section">
+        <h4 class="sidebar-label">Min Rating</h4>
+        <div class="chip-group" id="ratingChips">
+          <button class="chip active" data-value="0">Any</button>
+          <button class="chip" data-value="3">3+ ★</button>
+          <button class="chip" data-value="4">4+ ★</button>
+          <button class="chip" data-value="4.5">4.5+ ★</button>
+        </div>
       </div>
+
+      <div class="sidebar-section">
+        <h4 class="sidebar-label">Price Range</h4>
+        <div class="price-range">
+          <div class="range-labels">
+            <span>$0</span>
+            <span id="priceVal">$50</span>
+          </div>
+          <input type="range" id="priceRange" min="0" max="50" value="50" step="1">
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4 class="sidebar-label">Availability</h4>
+        <label class="toggle-label">
+          <input type="checkbox" id="inStockOnly">
+          <span class="toggle"></span>
+          In stock only
+        </label>
+      </div>
+
+      <div class="sidebar-section">
+        <h4 class="sidebar-label">Sort by</h4>
+        <select id="sortSelect" class="sort-select">
+          <option value="default">Default</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="rating-desc">Highest Rated</option>
+          <option value="title-asc">Title A–Z</option>
+        </select>
+      </div>
+
+      <button class="btn-reset-filters" id="resetFilters">Reset Filters</button>
+
     </div>
   </aside>
 
-  <main class="books">
-    <div class="grid">
-
-      <div class="book-card">
-        <div class="cover">📕</div>
-        <div class="info">
-          <h3>The Silent Echo</h3>
-          <div class="author">Jane Harper</div>
-          <div class="bottom">
-            <span class="price">$19.99</span>
-            <span class="rating">⭐ 4.5</span>
-          </div>
-          <div class="actions">
-            <button class="btn-icon">❤️</button>
-            <button class="btn-icon">🛒</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card">
-        <div class="cover">📘</div>
-        <div class="info">
-          <h3>Midnight Horizon</h3>
-          <div class="author">Elena Voss</div>
-          <div class="bottom">
-            <span class="price">$24.50</span>
-            <span class="rating">⭐ 4.8</span>
-          </div>
-          <div class="actions">
-            <button class="btn-icon">❤️</button>
-            <button class="btn-icon">🛒</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card">
-        <div class="cover">📗</div>
-        <div class="info">
-          <h3>Fragments of Time</h3>
-          <div class="author">Adrian Cole</div>
-          <div class="bottom">
-            <span class="price">$17.80</span>
-            <span class="rating">⭐ 4.3</span>
-          </div>
-          <div class="actions">
-            <button class="btn-icon">❤️</button>
-            <button class="btn-icon">🛒</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card">
-        <div class="cover">📙</div>
-        <div class="info">
-          <h3>Dreams of Dusk</h3>
-          <div class="author">Lina Moris</div>
-          <div class="bottom">
-            <span class="price">$21.00</span>
-            <span class="rating">⭐ 4.6</span>
-          </div>
-          <div class="actions">
-            <button class="btn-icon">❤️</button>
-            <button class="btn-icon">🛒</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card">
-        <div class="cover">📔</div>
-        <div class="info">
-          <h3>Whispers</h3>
-          <div class="author">Marcus Reed</div>
-          <div class="bottom">
-            <span class="price">$22.99</span>
-            <span class="rating">⭐ 4.7</span>
-          </div>
-          <div class="actions">
-            <button class="btn-icon">❤️</button>
-            <button class="btn-icon">🛒</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card">
-        <div class="cover">📓</div>
-        <div class="info">
-          <h3>Chronicles</h3>
-          <div class="author">Sarah Mitchell</div>
-          <div class="bottom">
-            <span class="price">$26.50</span>
-            <span class="rating">⭐ 4.9</span>
-          </div>
-          <div class="actions">
-            <button class="btn-icon">❤️</button>
-            <button class="btn-icon">🛒</button>
-          </div>
-        </div>
-      </div>
-
+  <!-- MAIN -->
+  <main class="books-main">
+    <div class="results-bar">
+      <span class="results-count" id="resultsCount">Loading…</span>
+      <button class="sidebar-toggle" id="sidebarToggle">⚙ Filters</button>
     </div>
-  </main>
 
+    <!-- GRID -->
+    <div class="grid" id="booksGrid"></div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">🔍</div>
+      <h3>No books found</h3>
+      <p>Try adjusting your filters or search term.</p>
+      <button class="btn-reset-filters" onclick="document.getElementById('resetFilters').click()">Clear Filters</button>
+    </div>
+
+  </main>
 </div>
 
+<footer>© 2026 BookHaven. Crafted for readers who love stories.</footer>
+
+<script type="module" src="js/browse.js"></script>
 </body>
 </html>

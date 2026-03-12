@@ -4,7 +4,7 @@ async function getData() {
     const data = await getBooks();
     return data;
 }
-const dataToSearch = await getData();
+ export const dataToSearch = await getData();
 //Take the data from main page
 const urlParams = new URLSearchParams(window.location.search);
 const searchTerm = urlParams.get('search');
