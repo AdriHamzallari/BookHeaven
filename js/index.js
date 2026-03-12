@@ -24,20 +24,7 @@ function heroBook(randomBook){
    heroContainer.className = 'hero-image';
    heroContainer.innerHTML = `
     
-  <div class="hero-image">
-    <div class="hero-image-placeholder">
-      <div class="featured-card">
-        <h3>${randomBook.title}</h3>
-        <p class="author">${randomBook.author}</p>
-        <div class="meta">
-          <span>philosophy</span>
-          <span>• ${randomBook.rating}</span>
-          <span>• ${randomBook.publishedDate}
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>`;
+  `;
 heroBookContainer.appendChild(heroContainer);
 }
 initHero();
@@ -53,7 +40,6 @@ searchBtn.addEventListener('click', (event) => {
     else{
       window.location.href = `books.html?search=${input}`;
     }
-    
 });
 
 
