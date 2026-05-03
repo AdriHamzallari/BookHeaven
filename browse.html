@@ -6,6 +6,7 @@
 <title>BookHaven – Browse</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/browse.css">
+<link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
@@ -17,7 +18,7 @@
     <li><a href="browse.html"   class="nav-btn active">Browse</a></li>
     <li><a href="wishlist.html" class="nav-btn">Wishlist</a></li>
     <li><a href="library.html"  class="nav-btn">Library</a></li>
-    <li><a href="cart.html"     class="nav-btn">Cart</a></li>
+    <li><a href="cart.html" class="nav-btn cart-badge" data-count="0">Cart</a></li>
     <li><a href="profile.html"  class="nav-btn">Profile</a></li>
   </ul>
 </nav>
@@ -46,32 +47,33 @@
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-inner">
-
-      <div class="sidebar-section">
-        <h4 class="sidebar-label">Category</h4>
-        <div class="chip-group" id="categoryChips">
-          <button class="chip active" data-value="all">All</button>
-          <button class="chip" data-value="classic">Classic</button>
-          <button class="chip" data-value="fiction">Fiction</button>
-          <button class="chip" data-value="mystery">Mystery</button>
-          <button class="chip" data-value="scifi">Sci-Fi</button>
-          <button class="chip" data-value="fantasy">Fantasy</button>
-          <button class="chip" data-value="thriller">Thriller</button>
-          <button class="chip" data-value="romance">Romance</button>
-          <button class="chip" data-value="nonfiction">Non-Fiction</button>
-        </div>
-      </div>
-
-      <div class="sidebar-section">
-        <h4 class="sidebar-label">Min Rating</h4>
-        <div class="chip-group" id="ratingChips">
-          <button class="chip active" data-value="0">Any</button>
-          <button class="chip" data-value="3">3+ ★</button>
-          <button class="chip" data-value="4">4+ ★</button>
-          <button class="chip" data-value="4.5">4.5+ ★</button>
-        </div>
-      </div>
-
+<div class="sidebar-section">
+  <h4 class="sidebar-label">Category</h4>
+  <div class="chip-group" id="categoryChips">
+    <button class="chip category-chip active" data-value="all">All</button>
+    <button class="chip category-chip" data-value="classic">Classic</button>
+    <button class="chip category-chip" data-value="memoir">Memoir</button>
+    <button class="chip category-chip" data-value="short-story">Short story</button>
+    <button class="chip category-chip" data-value="philosophical">Philosophical</button>
+    <button class="chip category-chip" data-value="psychological">Psychological</button>
+    <button class="chip category-chip" data-value="political">Political</button>
+    <button class="chip category-chip" data-value="romance">Romance</button>
+    <button class="chip category-chip" data-value="epistolary">Epistolary</button>
+    <button class="chip category-chip" data-value="absurdist">Absurdist</button>
+    <button class="chip category-chip" data-value="non-fiction">Non-fiction</button>
+    <button class="chip category-chip" data-value="anathology">Anathology</button>
+    <button class="chip category-chip" data-value="autobiographical">Autobiographical</button>
+  </div>
+</div>
+     <div class="sidebar-section">
+  <h4 class="sidebar-label">Min Rating</h4>
+  <div class="chip-group" id="ratingChips">
+    <button class="chip active rating-chip" data-value="0">Any</button>
+    <button class="chip rating-chip" data-value="3">3+ ★</button>
+    <button class="chip rating-chip" data-value="4">4+ ★</button>
+    <button class="chip rating-chip" data-value="4.5">4.5+ ★</button>
+  </div>
+</div>
       <div class="sidebar-section">
         <h4 class="sidebar-label">Price Range</h4>
         <div class="price-range">
@@ -102,8 +104,6 @@
           <option value="title-asc">Title A–Z</option>
         </select>
       </div>
-
-      <button class="btn-reset-filters" id="resetFilters">Reset Filters</button>
 
     </div>
   </aside>

@@ -6,6 +6,7 @@
 <title>BookHaven - Cart</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
@@ -16,12 +17,12 @@
     <li><a href="book.html" class="nav-btn">Browse</a></li>
     <li><a href="wishlist.html" class="nav-btn">Wishlist</a></li>
     <li><a href="library.html" class="nav-btn">Library</a></li>
-    <li><a href="cart.html" class="nav-btn active">Cart</a></li>
+     <li><a href="cart.html" class="nav-btn cart-badge" data-count="0">Cart</a></li>
     <li><a href="profile.html" class="nav-btn">Profile</a></li>
   </ul>
 </nav>
 
-<section class="cart-page">
+<section class="cart-page" id = "info-section">
 
   <h1 class="page-title">Your Cart</h1>
   <div class="cart-summary">
@@ -29,7 +30,7 @@
   </div>
 
   <!-- Filled cart example -->
-  <div class="cart-items">
+  <div class="cart-items" id = "cart-grid">
 
     <div class="cart-item">
       <div class="item-cover">📕</div>
@@ -62,7 +63,7 @@
     </div>
 
     <div class="cart-item">
-      <div class="item-cover">📗</div>
+      <div class="item-cover">👥</div>
       <div class="item-info">
         <h4>The Dry</h4>
         <div class="item-author">Jane Harper</div>

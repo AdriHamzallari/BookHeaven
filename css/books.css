@@ -349,3 +349,20 @@ footer {
   .grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
   .book-icon { font-size: 3.5rem; }
 }
+.cart-badge {
+  position: relative;
+}
+
+.cart-badge::after {
+  content: attr(data-count);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--danger);
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: bold;
+  /* If you want to hide it when 0, you'll handle that in JS or with CSS :not([data-count="0"]) */
+}
