@@ -1,8 +1,8 @@
 /* ============================================
-   BOOKHAVEN - CART STYLESHEET (Full Scale)
+   BOOKHAVEN - FULL CART STYLESHEET
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://googleapis.com');
 
 :root {
   --bg-primary:    #1a1f2e;
@@ -21,7 +21,11 @@
 }
 
 /* ── RESET & BASE ── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
 
 body {
   font-family: 'Inter', sans-serif;
@@ -29,6 +33,13 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  background: none;
 }
 
 /* Ambient Glow */
@@ -42,7 +53,7 @@ body::before {
   pointer-events: none;
 }
 
-/* ── NAVBAR (MATCHING INDEX) ── */
+/* ── NAVBAR ── */
 nav {
   display: flex;
   justify-content: space-between;
@@ -78,40 +89,57 @@ nav h1 {
   transition: all 0.25s ease;
 }
 
-.nav-btn.active, .nav-btn:hover {
+.nav-btn:hover {
   background: var(--accent-pink);
   border-color: var(--accent-pink);
   color: var(--bg-primary);
 }
 
-/* ── CART PAGE CONTENT ── */
-.cart-page {
+.cart-badge { position: relative; }
+.cart-badge::after {
+  content: attr(data-count);
+  position: absolute;
+  top: -8px; right: -8px;
+  background: var(--danger);
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* ── LAYOUT STRUCTURE ── */
+.cart-container {
   max-width: 1200px;
-  margin: 4rem auto;
+  margin: 3rem auto;
   padding: 0 6%;
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 3rem;
+  grid-template-columns: 1fr 380px; /* Left column for items, Right for Checkout */
+  gap: 2rem 4rem;
+  align-items: start;
+}
+
+/* ── SECTION 1: INFO (TOP) ── */
+#info-section {
+  grid-column: 1 / -1; /* Spans full width */
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .page-title {
-  grid-column: 1 / -1;
   font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 0.5rem;
 }
 
 .cart-summary {
-  grid-column: 1 / -1;
   font-size: 1.1rem;
   color: var(--text-secondary);
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 1.5rem;
-  margin-bottom: 1rem;
 }
 
-/* ── CART ITEMS ── */
-.cart-items {
+/* ── SECTION 2: GRID (LEFT) ── */
+#cart-grid {
+  grid-column: 1;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -120,180 +148,138 @@ nav h1 {
 .cart-item {
   background: var(--bg-card);
   border-radius: var(--radius-md);
-  padding: 1.8rem;
+  padding: 1.5rem;
   display: flex;
   gap: 2rem;
   border: 1px solid var(--border-subtle);
   transition: transform 0.3s ease;
-  animation: revealUp 0.6s ease both;
+  position: relative;
 }
 
 .cart-item:hover {
-  transform: translateY(-5px);
+  transform: translateX(10px);
   border-color: var(--accent-pink);
 }
 
 .item-cover {
-  width: 100px;
-  height: 150px;
+  width: 90px;
+  height: 130px;
   background: var(--bg-secondary);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
   flex-shrink: 0;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.item-info { flex: 1; position: relative; }
-
+.item-info { flex: 1; }
 .item-info h4 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
 }
-
-.item-author {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.item-price {
+.item-author { color: var(--text-secondary); font-size: 0.95rem; }
+.item-price { 
+  margin-top: 1rem;
   color: var(--accent-pink);
   font-weight: 700;
-  font-size: 1.3rem;
-}
-
-/* ── CONTROLS ── */
-.quantity {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  margin-top: 1.5rem;
-}
-
-.quantity button {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
-  width: 35px;
-  height: 35px;
-  border-radius: 8px;
   font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.2s;
-}
-
-.quantity button:hover {
-  background: var(--accent-pink);
-  color: var(--bg-primary);
 }
 
 .remove-btn {
   position: absolute;
-  top: 0; right: 0;
-  background: transparent;
+  top: 1.5rem; right: 1.5rem;
   color: var(--text-muted);
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.8rem;
+  transition: color 0.2s;
 }
-
 .remove-btn:hover { color: var(--danger); }
 
-/* ── CHECKOUT CARD ── */
-.cart-total {
-  background: var(--bg-card);
-  border-radius: var(--radius-md);
-  padding: 2.5rem;
-  height: fit-content;
-  border: 1px solid rgba(212,180,180,0.2);
-  box-shadow: var(--shadow-lg);
+/* ── SECTION 3: CHECKOUT (RIGHT) ── */
+#checkout-section {
+  grid-column: 2;
   position: sticky;
   top: 6rem;
 }
 
-.cart-total h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
+.cart-total-card {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(212,180,180,0.15);
+  box-shadow: var(--shadow-lg);
 }
 
-.cart-total div {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.2rem;
-  color: var(--text-secondary);
-  font-size: 1.05rem;
+.cart-total-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
 }
 
 .total-line {
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 1.5rem;
-  margin-top: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary) !important;
-  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 }
+
+.total-label { color: var(--text-secondary); font-size: 1rem; }
+.total-amount { font-size: 1.6rem; font-weight: 700; color: var(--accent-light); }
 
 .checkout-btn {
   width: 100%;
-  padding: 1.2rem;
+  padding: 1.1rem;
   background: var(--accent-pink);
   color: var(--bg-primary);
   border-radius: var(--radius-full);
   font-weight: 700;
-  font-size: 1.1rem;
-  margin-top: 1.5rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
 .checkout-btn:hover {
   background: var(--accent-light);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(212,180,180,0.2);
-}
-.cart-badge {
-  position: relative;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212,180,180,0.2);
 }
 
-.cart-badge::after {
-  content: attr(data-count);
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: var(--danger);
-  color: white;
-  font-size: 0.7rem;
-  padding: 2px 6px;
-  border-radius: 10px;
-  font-weight: bold;
-  /* If you want to hide it when 0, you'll handle that in JS or with CSS :not([data-count="0"]) */
+/* ── EMPTY STATE ── */
+.empty-cart {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 5rem 0;
 }
-
-
-/* ── ANIMATIONS ── */
-@keyframes revealUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+.empty-cart h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; }
+.btn-shop {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  background: var(--accent-pink);
+  color: var(--bg-primary);
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  font-weight: 600;
 }
 
 /* ── FOOTER ── */
 footer {
   text-align: center;
-  padding: 5rem 0;
+  padding: 4rem 0;
   color: var(--text-muted);
   border-top: 1px solid var(--border-subtle);
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 992px) {
-  .cart-page { grid-template-columns: 1fr; gap: 2rem; }
-  .page-title { font-size: 2.8rem; }
+  .cart-container { grid-template-columns: 1fr; }
+  #cart-grid, #checkout-section { grid-column: 1; }
+  #checkout-section { position: static; margin-top: 2rem; }
+  .page-title { font-size: 2.4rem; }
 }

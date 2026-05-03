@@ -163,7 +163,9 @@ function renderBooks(data) {
             currentItems = currentItems.filter(item => item.isbn !== result.data.isbn);
             btn.classList.remove(result.type === 'CART' ? 'active-cart' : 'active-wishlist');
         }
+        console.log(currentItems);
         localStorage.setItem(storageKey, JSON.stringify(currentItems));
+
     }
            });
 //=======|||||||||||||||==========
