@@ -28,7 +28,6 @@ wishlistActions.style.display = 'none';
         <div class="author">${book.author}</div>
         <div class="card-footer">
             <span class="price">$${book.price}</span>
-            <span class="rating">⭐ ${book.rating}</span>
         </div>
         <div class="card-actions">
             <button class="btn btn-cart" data-id="${book.isbn}">Add to Cart</button>

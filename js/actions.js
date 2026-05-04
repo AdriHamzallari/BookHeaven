@@ -5,6 +5,7 @@ export const formatBookData = (book) => ({
     title: book.title,
     author: book.author,
     price: book.price,
+    rating: book.rating
 });
 
 export function handleAction(btn, books) {
