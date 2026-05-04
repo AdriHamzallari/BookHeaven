@@ -1,4 +1,5 @@
 import { getBooks } from './api.js';
+import { handleAction, updateStorage } from './actions.js';
 const totalBooksEl = document.getElementById('total-books');
 const wishlistCountEl = document.getElementById('wishlist-count');
 const cartCountEl = document.getElementById('cart-count');
@@ -29,7 +30,8 @@ function heroBook(randomBook){
    const heroContainer = document.createElement('div');
    heroContainer.className = 'hero-book-card';
    heroContainer.innerHTML = `
-   
+   <a href="book.html?id=${randomBook.isbn}" class="book-link">
+
       <div class="hero-book-cover">
         <div class="hero-book-icon">${randomBook.cover}</div>
         <div class="hero-cover-shine"></div>
@@ -41,16 +43,18 @@ function heroBook(randomBook){
         <div class="hero-book-meta">
           <span class="hero-book-price">$${randomBook.price}</span>
           <span class="hero-book-rating">⭐${randomBook.rating}</span>
-        </div>
-        <div class="hero-book-actions">
-          <button class="hero-action-wish">♡ Wishlist</button>
-          <button class="hero-action-cart">🛒 Add to Cart</button>
-        </div>
+        </div></a>
+<div class="hero-book-actions">
+  <button class="hero-action-wish wishlist-btn action-btn" data-id="${randomBook.isbn}">♡ Wishlist</button>
+  <button class="hero-action-cart cart-btn action-btn" data-id="${randomBook.isbn}">🛒 Add to Cart</button>
+</div>
+
       </div>
+      
   `;
 heroBookContainer.appendChild(heroContainer);
 }
-initHero();
+
 //Search
 
 searchBtn.addEventListener('click', (event) => {
@@ -81,26 +85,71 @@ function displayFeaturedBooks(){
 let featureArr = displayFeaturedBooks();
 
 console.log(featureArr);
-function createFeaturedBooks(){
-   featureArr.forEach(f => 
-   {
+function createFeaturedBooks() {
+   featureArr.forEach(f => {
     const newDiv = document.createElement('div');
     newDiv.className = 'card';
-    newDiv.innerHTML = ` 
-      <div class="book-cover">${f.cover}</div>
-      <h3>${f.title}</h3>
-      <p class="author">${f.author}</p>
-      <div class="card-footer">
-        <span class="price">$${f.price}</span>
-        <span class="rating">⭐ ${f.rating}</span>
-      </div>
+    newDiv.innerHTML = `
+      <a href="book.html?id=${f.isbn}" class="book-link">
+        <div class="book-cover">${f.cover}</div>
+        <h3>${f.title}</h3>
+        <p class="author">${f.author}</p>
+        <div class="card-footer">
+          <span class="price">$${f.price}</span>
+          <span class="rating">⭐ ${f.rating}</span>
+        </div>
+      </a>
       <div class="card-actions">
-        <button class="icon-btn">❤️</button>
-        <button class="icon-btn">🛒</button>
+        <!-- ADDED wishlist-btn and cart-btn CLASSES BELOW -->
+        <button class="icon-btn wishlist-btn" data-id="${f.isbn}">❤️</button>
+        <button class="icon-btn cart-btn" data-id="${f.isbn}">🛒</button>
       </div>
     `;
     featuredBooksContainer.appendChild(newDiv);
-   }
-   );
+   });
 }
-createFeaturedBooks();
+ function updateDashboardStats() {
+    const wishlist = JSON.parse(localStorage.getItem('userWishlist')) || [];
+    const cart = JSON.parse(localStorage.getItem('userCart')) || [];
+    const library = JSON.parse(localStorage.getItem('userLibrary')) || [];
+
+    if (totalBooksEl) totalBooksEl.textContent = dataFromAPI.length;
+    if (wishlistCountEl) wishlistCountEl.textContent = wishlist.length;
+    if (cartCountEl) cartCountEl.textContent = cart.length;
+    if (libraryCountEl) libraryCountEl.textContent = library.length;
+
+    const cartBadge = document.querySelector('.cart-badge');
+    if (cartBadge) {
+        cartBadge.setAttribute('data-count', cart.length);
+    }
+}
+
+
+featuredBooksContainer.addEventListener('click', (e) => {
+         const btn = e.target.closest('.icon-btn');
+         if(!btn) return;
+         const result = handleAction(btn, dataFromAPI);
+             if (result) {
+         const isAdded = updateStorage(result.type, result.data);
+         if (isAdded) {
+             btn.classList.add('active-btn');
+             updateDashboardStats();
+         } else {
+             btn.classList.remove('active-btn');
+             updateDashboardStats();
+         }
+     }
+     });
+heroBookContainer.addEventListener('click', (e) => {
+    const btn = e.target.closest('.action-btn');
+     if(!btn) return;
+         const result = handleAction(btn, dataFromAPI);
+             if (result) {
+         const isAdded = updateStorage(result.type, result.data);
+         updateDashboardStats();
+     }
+})
+
+ createFeaturedBooks();
+ updateDashboardStats();
+ initHero();

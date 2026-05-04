@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="css/global.css">
 <link rel="stylesheet" href="css/wishlist.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
@@ -15,102 +14,36 @@
   <h1>📚 BookHaven</h1>
   <ul class="nav-links">
     <li><a href="index.html" class="nav-btn">Home</a></li>
-    <li><a href="books.html" class="nav-btn">Browse</a></li>
+    <li><a href="browse.html" class="nav-btn">Browse</a></li>
     <li><a href="wishlist.html" class="nav-btn active">Wishlist</a></li>
     <li><a href="library.html" class="nav-btn">Library</a></li>
-     <li><a href="cart.html" class="nav-btn cart-badge" data-count="0">Cart</a></li>
+    <li><a href="cart.html" class="nav-btn cart-badge" data-count="0">Cart</a></li>
     <li><a href="profile.html" class="nav-btn">Profile</a></li>
   </ul>
 </nav>
 
-<section class="wishlist-page">
+<!-- MAIN WRAPPER -->
+<main class="wishlist-container">
 
-  <h1 class="page-title">Your Wishlist</h1>
-  <div class="wishlist-summary">
-    <strong>4 books</strong> saved • Estimated total: <strong>$78.28</strong>
-  </div>
+ <section class="wishlist-page">
+  <!-- 1. INFO SECTION -->
+  <div id="wishlist-info"></div>
 
-  <!-- FILLED WISHLIST EXAMPLE -->
-  <div class="grid">
-    <div class="card">
-      <div class="book-cover">📕</div>
-      <div class="card-content">
-        <h3>The Silent Echo</h3>
-        <div class="author">Jane Harper</div>
-        <div class="card-footer">
-          <span class="price">$19.99</span>
-          <span class="rating">⭐ 4.5</span>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-cart">Add to Cart</button>
-          <button class="btn btn-remove">Remove</button>
-        </div>
-      </div>
-    </div>
+  <!-- 2. BOOKS GRID -->
+  <div id="wishlist-grid" class="grid"></div>
 
-    <div class="card">
-      <div class="book-cover">📘</div>
-      <div class="card-content">
-        <h3>Midnight Horizon</h3>
-        <div class="author">Elena Voss</div>
-        <div class="card-footer">
-          <span class="price">$24.50</span>
-          <span class="rating">⭐ 4.8</span>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-cart">Add to Cart</button>
-          <button class="btn btn-remove">Remove</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="book-cover">📗</div>
-      <div class="card-content">
-        <h3>The Dry</h3>
-        <div class="author">Jane Harper</div>
-        <div class="card-footer">
-          <span class="price">$16.50</span>
-          <span class="rating">⭐ 4.7</span>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-cart">Add to Cart</button>
-          <button class="btn btn-remove">Remove</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="book-cover">📙</div>
-      <div class="card-content">
-        <h3>Scrublands</h3>
-        <div class="author">Chris Hammer</div>
-        <div class="card-footer">
-          <span class="price">$17.29</span>
-          <span class="rating">⭐ 4.6</span>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-cart">Add to Cart</button>
-          <button class="btn btn-remove">Remove</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- UNCOMMENT BELOW FOR EMPTY WISHLIST STATE -->
-  <!--
-  <div class="empty-state">
-    <h2>Your Wishlist is Empty</h2>
-    <p>Looks like you haven't saved any books yet.<br>Start exploring and add your favorites!</p>
-    <a href="books.html" class="btn-explore">Browse Collection</a>
-  </div>
-  -->
-
+  <!-- 3. EMPTY STATE (Hidden by default) -->
+  <div id="empty-state" style="display: none;"></div>
 </section>
+
+
+</main>
 
 <footer>
   © 2026 BookHaven. Crafted for readers who love stories.
 </footer>
 
+<!-- Using type="module" allows you to import handleAction from actions.js -->
+<script type="module" src="js/wishlist.js"></script>
 </body>
 </html>

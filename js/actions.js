@@ -26,3 +26,19 @@ export function handleAction(btn, books) {
     
     return null;
 }
+export function updateStorage(type, data) {
+    const key = type === 'CART' ? 'userCart' : 'userWishlist';
+    let items = JSON.parse(localStorage.getItem(key)) || [];
+    
+    const exists = items.some(item => item.isbn === data.isbn);
+
+    if (!exists) {
+        items.push(data);
+        localStorage.setItem(key, JSON.stringify(items));
+        return true; 
+    } else {
+        items = items.filter(item => item.isbn !== data.isbn);
+        localStorage.setItem(key, JSON.stringify(items));
+        return false;
+    }
+}

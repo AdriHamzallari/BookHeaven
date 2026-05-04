@@ -172,8 +172,7 @@ nav h1 {
 }
 .wishlist-btn:hover { background: var(--danger); border-color: var(--danger); color: white; }
 .cart-btn:hover { background: var(--accent); border-color: var(--accent); color: #1e293b; }
-.active-wishlist { background: var(--danger); border-color: var(--danger); color: white; }
-.active-cart { background: var(--accent); border-color: var(--accent); color: #1e293b; }
+.active-btn  { background: var(--accent); border-color: var(--accent); color: #1e293b; }
 
 /* ── BETTER NO RESULT STATE ── */
 #emptyState {

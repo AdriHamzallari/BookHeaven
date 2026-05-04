@@ -42,6 +42,38 @@
     </section>
 
 </main>
+<!-- CHECKOUT MODAL -->
+<div id="checkout-modal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Confirm Your Order</h2>
+      <button id="close-modal" class="close-btn">&times;</button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="user-name">Full Name</label>
+        <input type="text" id="user-name" placeholder="Enter your name" required>
+      </div>
+      
+      <div class="order-preview">
+        <h4>Order Summary</h4>
+        <ul id="modal-item-list">
+          <!-- JS will inject list items here -->
+        </ul>
+        <div class="modal-total">
+          <span>Total to Pay:</span>
+          <strong id="modal-total-amount">$0.00</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button id="cancel-purchase" class="btn-secondary">Cancel</button>
+      <button id="confirm-purchase" class="btn-confirm">Confirm & Pay</button>
+    </div>
+  </div>
+</div>
 
 <footer>
   © 2026 BookHaven. Crafted for readers who love stories.

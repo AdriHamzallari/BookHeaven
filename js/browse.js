@@ -1,5 +1,5 @@
 import { getBooks } from './api.js';
-import { handleAction } from './actions.js';
+import { handleAction, updateStorage } from './actions.js';
 async function getData() {
     const data = await getBooks();
     return data;
@@ -123,6 +123,7 @@ function renderBooks(data) {
         const gridBook = document.createElement('div');
         gridBook.className = 'book-card';
         gridBook.innerHTML = `
+         <a href="book.html?id=${b.isbn}" class="book-link">
             <div class="book-cover">
               <div class="book-icon">${b.cover}</div>
             </div>
@@ -132,12 +133,13 @@ function renderBooks(data) {
               <div class="card-meta">
                 <span class="price">$${b.price}</span>
                 <span class="rating">⭐ ${b.rating}</span>
-              </div>
+              </div></a>
  <div class="card-actions">
 <button class="action-btn wishlist-btn" data-id="${b.isbn}" data-action="favourite">❤️</button>
 <button class="action-btn cart-btn" data-id="${b.isbn}" data-action="cart">🛒</button>
     </div>  
             </div>
+            
         `;
         
         booksGrid.appendChild(gridBook);
@@ -146,28 +148,22 @@ function renderBooks(data) {
   }
 //=======EventDelegation==========
  booksGrid.addEventListener('click', (e) => {
-            const btn = e.target.closest('.action-btn');
-            if(!btn) return;
-           const result = handleAction(btn, books);
-
-           if(result)
-           {
-                const storageKey = result.type === 'CART' ? 'userCart' : 'userWishlist';
-                let currentItems = JSON.parse(localStorage.getItem(storageKey)) || [];
-                const exists = currentItems.some(item => item.isbn === result.data.isbn);
-
-                  if (!exists) {
-            currentItems.push(result.data);
-            btn.classList.add(result.type === 'CART' ? 'active-cart' : 'active-wishlist');
+        const btn = e.target.closest('.action-btn');
+        if(!btn) return;
+        const result = handleAction(btn, books);
+            if (result) {
+        
+        const isAdded = updateStorage(result.type, result.data);
+        
+        
+        if (isAdded) {
+            btn.classList.add('active-btn');
         } else {
-            currentItems = currentItems.filter(item => item.isbn !== result.data.isbn);
-            btn.classList.remove(result.type === 'CART' ? 'active-cart' : 'active-wishlist');
+            btn.classList.remove('active-btn');
         }
-        console.log(currentItems);
-        localStorage.setItem(storageKey, JSON.stringify(currentItems));
-
     }
-           });
+
+    });
 //=======|||||||||||||||==========
 resetFiltersBtn.addEventListener('click', () => {
     allFilters.category = ['all'];

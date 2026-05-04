@@ -435,7 +435,12 @@ nav h1 {
   border-color: var(--accent-pink);
   transform: scale(1.1);
 }
-
+.active-btn{
+  background: var(--accent-pink);
+  color: var(--bg-primary);
+  border-color: var(--accent-pink);
+  transform: scale(1.1);
+}
 /* ── CATEGORIES ── */
 .categories {
   padding: 4rem 6%;

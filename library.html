@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BookHaven - My Library</title>
 <link rel="stylesheet" href="css/global.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/library.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,96 +14,28 @@
   <h1>📚 BookHaven</h1>
   <ul class="nav-links">
     <li><a href="index.html" class="nav-btn">Home</a></li>
-    <li><a href="books.html" class="nav-btn">Browse</a></li>
+    <li><a href="browse.html" class="nav-btn">Browse</a></li>
     <li><a href="wishlist.html" class="nav-btn">Wishlist</a></li>
     <li><a href="library.html" class="nav-btn active">Library</a></li>
-     <li><a href="cart.html" class="nav-btn cart-badge" data-count="0">Cart</a></li> 
+    <li><a href="cart.html" class="nav-btn cart-badge" data-count="0">Cart</a></li> 
     <li><a href="profile.html" class="nav-btn">Profile</a></li>
   </ul>
 </nav>
 
-<section class="library-page">
+<!-- MAIN CONTAINER -->
+<main class="library-container">
+  <section id="library-info">
+  </section>
 
-  <h1 class="page-title">My Library</h1>
-  <div class="library-summary">
-    <strong>47 books</strong> in your collection • <strong>12</strong> read this year
-  </div>
+  <section id="library-grid" class="grid">
+  </section>
 
-  <!-- Shembull me disa libra -->
-  <div class="grid">
-
-    <div class="card">
-      <div class="book-cover">📕</div>
-      <div class="card-content">
-        <h3>The Silent Echo</h3>
-        <div class="author">Jane Harper</div>
-        <div class="card-footer">
-          <span class="format-badge">eBook</span>
-        </div>
-        <div class="progress">
-          <div class="progress-bar" style="width: 100%;"></div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-read">Read Now</button>
-          <button class="btn btn-details">Details</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="book-cover">📘</div>
-      <div class="card-content">
-        <h3>Midnight Horizon</h3>
-        <div class="author">Elena Voss</div>
-        <div class="card-footer">
-          <span class="format-badge">Audiobook</span>
-        </div>
-        <div class="progress">
-          <div class="progress-bar" style="width: 42%;"></div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-read">Continue Reading</button>
-          <button class="btn btn-details">Details</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="book-cover">📗</div>
-      <div class="card-content">
-        <h3>The Dry</h3>
-        <div class="author">Jane Harper</div>
-        <div class="card-footer">
-          <span class="format-badge">Paperback</span>
-        </div>
-        <div class="progress">
-          <div class="progress-bar" style="width: 0%;"></div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-read">Start Reading</button>
-          <button class="btn btn-details">Details</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Shto më shumë karta sipas nevojës -->
-
-  </div>
-
-  <!-- Empty state – hiq komentet kur nuk ka libra -->
-  <!--
-  <div class="empty-library">
-    <h2>Your library is empty</h2>
-    <p>You haven't purchased or added any books yet.<br>Start exploring and building your collection!</p>
-    <a href="books.html" class="btn-browse">Browse Collection</a>
-  </div>
-  -->
-
-</section>
+</main>
 
 <footer>
   © 2026 BookHaven. Crafted for readers who love stories.
 </footer>
 
+<script type="module" src="js/library.js"></script>
 </body>
 </html>
