@@ -30,9 +30,6 @@ const allFilters = {
     availability: false,
     sortBy: 'default'
 };
-//CART and WISHLIST
-const savedCart = JSON.parse(localStorage.getItem('userCart')) || [];
-const savedWishlist = JSON.parse(localStorage.getItem('userWishlist')) || [];
 
 priceRange.addEventListener('input', (e) => {
     priceValLabel.textContent = `$${e.target.value}`;

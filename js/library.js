@@ -1,8 +1,9 @@
-let libraryStorage = JSON.parse(localStorage.getItem('userLibrary')) || [];
+
 const libraryInfo = document.getElementById('library-info');
 const grid = document.getElementById('library-grid');
 function createLibrary()
 {
+    let libraryStorage = JSON.parse(localStorage.getItem('userLibrary')) || [];
       if (libraryStorage.length === 0) {
         libraryInfo.innerHTML = `
             <h1 class="page-title">My Library</h1>

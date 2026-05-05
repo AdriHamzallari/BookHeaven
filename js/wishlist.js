@@ -15,8 +15,6 @@ function createWishList()
         <a href="browse.html" class="btn-explore">Browse Collection</a>
     </div>
 `;
-wishlistGrid.style.display = 'none';
-wishlistActions.style.display = 'none';
     }
   let totalPrice = 0;
    dreamBooks.forEach(book => {
@@ -52,13 +50,13 @@ const cart = JSON.parse(localStorage.getItem('userCart')) || [];
     }
 wishListItems.addEventListener('click', (e) => {
     const removeBtn = e.target.closest('.btn-remove');
-    if(!removeBtn) return;
+    if (!removeBtn) return;
     const idToRemove = removeBtn.getAttribute('data-id');
     const card = removeBtn.closest('.card');
-    card.style.display = 'none';
-   card.remove();
-    const newWishList = dreamBooks.filter(book => book.isbn !== idToRemove);
-    localStorage.setItem('userWishlist', JSON.stringify(newWishList));
+    card.remove();
+    const current = JSON.parse(localStorage.getItem('userWishlist')) || [];
+    const updated = current.filter(book => book.isbn !== idToRemove);
+    localStorage.setItem('userWishlist', JSON.stringify(updated));
     createWishList();
 });
 createWishList();
