@@ -4,6 +4,13 @@ async function getData() {
     const data = await getBooks();
     return data;
 }
+function syncNavbarBadge() {
+    const cart = JSON.parse(localStorage.getItem('userCart')) || [];
+    const badge = document.querySelector('.cart-badge');
+    if (badge) {
+        badge.setAttribute('data-count', cart.length);
+    }
+}
 const books = await getData();
 const urlParams = new URLSearchParams(window.location.search);
 const clickedBooks = urlParams.get('id');
@@ -12,11 +19,7 @@ const book = books.find(b => b.isbn === clickedBooks);
 console.log(book);
 const bookContent = document.getElementById('book-content');
 const moreBooks = document.getElementById('author-books-grid');
-const cart = JSON.parse(localStorage.getItem('userCart')) || [];
- const cartBadge = document.querySelector('.cart-badge');
-    if (cartBadge) {
-        cartBadge.setAttribute('data-count', cart.length);
-    }
+
 const authorBooks = books.filter(b => b.author === book.author);
 console.log(authorBooks);
 bookContent.innerHTML = ``;
@@ -107,3 +110,4 @@ bookContent.addEventListener('click', (e) => {
  
      });
 createUI();
+syncNavbarBadge();

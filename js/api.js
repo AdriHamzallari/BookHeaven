@@ -7,7 +7,6 @@ export async function getBooks() {
     return data;
     
    } catch (error) {
-    console.log("Error");
    }
 }
 

@@ -1,5 +1,4 @@
 let libraryStorage = JSON.parse(localStorage.getItem('userLibrary')) || [];
-console.log(libraryStorage);
 const libraryInfo = document.getElementById('library-info');
 const grid = document.getElementById('library-grid');
 function createLibrary()

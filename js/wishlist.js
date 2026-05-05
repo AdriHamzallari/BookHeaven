@@ -1,9 +1,10 @@
-const dreamBooks = JSON.parse(localStorage.getItem('userWishlist')) || [];
+
 const wishListInfo = document.getElementById('wishlist-info');
 const wishListItems = document.getElementById('wishlist-grid');
 
 function createWishList()
 {
+    const dreamBooks = JSON.parse(localStorage.getItem('userWishlist')) || [];
     wishListItems.innerHTML = '';
     if(dreamBooks.length === 0)
     {
@@ -35,6 +36,7 @@ wishlistActions.style.display = 'none';
         </div>
     </div>`;
     wishListItems.appendChild(item);
+    
    });
      wishListInfo.innerHTML = ` <h1 class="page-title">Your Wishlist</h1>
     <div class="wishlist-summary">

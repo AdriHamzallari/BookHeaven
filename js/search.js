@@ -1,6 +1,7 @@
 
-import { handleAction } from "./actions.js";
+import { handleAction, restoreButtonStates } from "./actions.js";
 import { getBooks } from "./api.js";
+
 async function getData() {
     const data = await getBooks();
     return data;
@@ -17,7 +18,6 @@ const header = document.getElementById('header');
 const nrResult = document.getElementById('resultctr');
 //Kontroll nese cfare po kerkohet eshte e ne te dhenat
 const isValidData = books.filter(d => d.author.toLowerCase().includes(searchTerm.toLowerCase()) || d.title.toLowerCase().includes(searchTerm.toLowerCase()) || d.isbn === searchTerm);
-console.log(isValidData);
 //Search funcionality
 if(isValidData.length !== 0){
  noResultCase.style.display = "none";
@@ -46,6 +46,7 @@ if(isValidData.length !== 0){
         
     `;
     booksContainer.appendChild(gridBook);
+    restoreButtonStates(gridBook, b.isbn);
   });
 }
 else{
@@ -56,16 +57,13 @@ nrResult.textContent = isValidData.length;
 //=======EventDelegation=====//
 booksContainer.addEventListener('click', (e) => {
   const btn = e.target.closest('.action-btn');
-  console.log("yes");
   if(!btn) return;
   const result = handleAction(btn, books);
-  console.log(result);
   if(result)
   {
       const storageKey = result.type === 'CART' ? 'userCart' : 'userWishlist';
       let currentItems = JSON.parse(localStorage.getItem(storageKey)) ||[];
       const exist = currentItems.some(item => item.isbn === result.data.isbn);
-      console.log(exist);
       if (!exist)
       {
         currentItems.push(result.data);

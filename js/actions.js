@@ -43,3 +43,13 @@ export function updateStorage(type, data) {
         return false;
     }
 }
+export function restoreButtonStates(container, isbn) {
+  const savedCart = JSON.parse(localStorage.getItem('userCart')) || [];
+  const savedWishlist = JSON.parse(localStorage.getItem('userWishlist')) || [];
+
+  const wishBtn = container.querySelector('.wishlist-btn');
+  const cartBtn = container.querySelector('.cart-btn');
+
+  if (wishBtn && savedWishlist.some(i => i.isbn === isbn)) wishBtn.classList.add('active-btn');
+  if (cartBtn && savedCart.some(i => i.isbn === isbn)) cartBtn.classList.add('active-btn');
+}

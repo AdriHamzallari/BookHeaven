@@ -5,13 +5,13 @@ const chechkout = document.getElementById("checkout-section");
 const checkoutModal = document.getElementById('checkout-modal');
 const totalAmount = document.getElementById('modal-total-amount');
  function renderItems() {
-    // Check for empty state first
+    // Empty state 
     if (cartItems.length === 0) {
-        cartGrid.innerHTML = ''; // Clear the grid
+        cartGrid.innerHTML = '';
         infoSection.innerHTML = `
             <div class="empty-cart">
                 <h2>Your cart is empty</h2>
-                <a href="books.html" class="btn-shop">Shop Now</a>
+                <a href="browse.html" class="btn-shop">Shop Now</a>
             </div>`;
         return;
     }
@@ -20,7 +20,7 @@ const totalAmount = document.getElementById('modal-total-amount');
     let totalPrice = 0;
 
     cartItems.forEach(book => {
-        totalPrice += Number(book.price); // Ensure it's a number
+        totalPrice += Number(book.price);
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
         cartItem.innerHTML = `
@@ -45,20 +45,15 @@ const totalAmount = document.getElementById('modal-total-amount');
       `;
 }
 
-renderItems();
-
 //Remove Logic
 cartGrid.addEventListener('click', (e) => {
     const removeBtn = e.target.closest('.remove-btn');
     if(!removeBtn) return;
     const idToRemove = removeBtn.getAttribute('data-id');
-    const updatedCart = cartItems.filter(book => book.isbn !== idToRemove);
     const card = removeBtn.closest('.cart-item');
     card.style.display = 'none';
-    card.style.transform = 'scale(0.9)';
-
-
-    // Remove the element from the DOM after the animation (optional)
+   card.remove();
+     const updatedCart = cartItems.filter(book => book.isbn !== idToRemove);
     localStorage.setItem('userCart', JSON.stringify(updatedCart));
     renderItems();
 });
@@ -70,7 +65,7 @@ const closeBtn = document.getElementById('close-modal');
 const cancleBtn = document.getElementById('cancel-purchase');
 const confirmPurch = document.getElementById('confirm-purchase');
 
-openBtn.addEventListener('click', () => {
+if (openBtn) openBtn.addEventListener('click', () => {
   modal.classList.add('active');
 });
 closeBtn.addEventListener('click', () => {
@@ -89,9 +84,12 @@ confirmPurch.addEventListener('click', () => {
     window.location.href = 'library.html';
     
 })
-//Update the badge
-const cart = JSON.parse(localStorage.getItem('userCart')) || [];
- const cartBadge = document.querySelector('.cart-badge');
-    if (cartBadge) {
-        cartBadge.setAttribute('data-count', cart.length);
+function syncNavbarBadge() {
+    const cart = JSON.parse(localStorage.getItem('userCart')) || [];
+    const badge = document.querySelector('.cart-badge');
+    if (badge) {
+        badge.setAttribute('data-count', cart.length);
     }
+}
+syncNavbarBadge();
+renderItems();

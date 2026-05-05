@@ -1,5 +1,6 @@
 import { getBooks } from './api.js';
 import { handleAction, updateStorage } from './actions.js';
+import { restoreButtonStates } from './actions.js';
 const totalBooksEl = document.getElementById('total-books');
 const wishlistCountEl = document.getElementById('wishlist-count');
 const cartCountEl = document.getElementById('cart-count');
@@ -24,9 +25,7 @@ async function getDataFromAPI(params) {
   return data;
 }
 const dataFromAPI = await getDataFromAPI();
-console.log(dataFromAPI);
 function heroBook(randomBook){
-    console.log(randomBook);
    const heroContainer = document.createElement('div');
    heroContainer.className = 'hero-book-card';
    heroContainer.innerHTML = `
@@ -84,7 +83,6 @@ function displayFeaturedBooks(){
 }
 let featureArr = displayFeaturedBooks();
 
-console.log(featureArr);
 function createFeaturedBooks() {
    featureArr.forEach(f => {
     const newDiv = document.createElement('div');
@@ -106,8 +104,10 @@ function createFeaturedBooks() {
       </div>
     `;
     featuredBooksContainer.appendChild(newDiv);
+    restoreButtonStates(newDiv, f.isbn);
    });
 }
+
  function updateDashboardStats() {
     const wishlist = JSON.parse(localStorage.getItem('userWishlist')) || [];
     const cart = JSON.parse(localStorage.getItem('userCart')) || [];
@@ -149,7 +149,14 @@ heroBookContainer.addEventListener('click', (e) => {
          updateDashboardStats();
      }
 })
-
+function syncNavbarBadge() {
+    const cart = JSON.parse(localStorage.getItem('userCart')) || [];
+    const badge = document.querySelector('.cart-badge');
+    if (badge) {
+        badge.setAttribute('data-count', cart.length);
+    }
+}
+syncNavbarBadge();
  createFeaturedBooks();
  updateDashboardStats();
  initHero();

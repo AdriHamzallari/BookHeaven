@@ -17,7 +17,11 @@ const priceValLabel = document.getElementById('priceVal');
 const inStockOnly = document.getElementById('inStockOnly');
 const sortSelect = document.getElementById('sortSelect');
 const resetFiltersBtn = document.getElementById('resetFilters');
-
+const cart = JSON.parse(localStorage.getItem('userCart')) || [];
+ const cartBadge = document.querySelector('.cart-badge');
+    if (cartBadge) {
+        cartBadge.setAttribute('data-count', cart.length);
+    }
 // State
 const allFilters = {
     category: ['all'], 
@@ -143,6 +147,14 @@ function renderBooks(data) {
         `;
         
         booksGrid.appendChild(gridBook);
+        const savedCart = JSON.parse(localStorage.getItem('userCart')) || [];
+const savedWishlist = JSON.parse(localStorage.getItem('userWishlist')) || [];
+
+const wishBtn = gridBook.querySelector('.wishlist-btn');
+const cartBtn = gridBook.querySelector('.cart-btn');
+
+if (savedWishlist.some(i => i.isbn === b.isbn)) wishBtn.classList.add('active-btn');
+if (savedCart.some(i => i.isbn === b.isbn)) cartBtn.classList.add('active-btn');
       });
      
   }
