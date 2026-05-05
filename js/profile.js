@@ -54,7 +54,6 @@ document.querySelector('.reading-list').addEventListener('click', (e) => {
     }
 });
 
-// 2. Add the click event
 saveBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const updatedUser = {
