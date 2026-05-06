@@ -10,7 +10,7 @@ A fully client-side **online bookstore and personal library app** built with van
 
 ## 🚀 Live Demo
 
-> 🔗 [View Live →](https://adrihamzallari.github.io/BookHeaven) *(deploy and update this link)*
+> 🔗 [View Live →](https://adrihamzallari.github.io/BookHeaven)
 
 ---
 
