@@ -86,6 +86,7 @@ searchBtn.addEventListener('click', () => {
 });
 
 function findBooks() {
+     if (!books || books.length === 0) return;
     const query = searchInput.value.toLowerCase();
 
     let validData = books.filter(b => {
@@ -174,7 +175,7 @@ if (savedCart.some(i => i.isbn === b.isbn)) cartBtn.classList.add('active-btn');
 
     });
 //=======|||||||||||||||==========
-resetFiltersBtn.addEventListener('click', () => {
+if (resetFiltersBtn) resetFiltersBtn.addEventListener('click', () => {
     allFilters.category = ['all'];
     allFilters.rating = 0;
     allFilters.price = 50;
