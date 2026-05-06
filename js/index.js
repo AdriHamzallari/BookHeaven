@@ -1,6 +1,11 @@
 import { getBooks } from './api.js';
 import { handleAction, updateStorage } from './actions.js';
 import { restoreButtonStates } from './actions.js';
+async function getDataFromAPI(params) {
+  const data = await getBooks();
+  return data;
+}
+const dataFromAPI = await getDataFromAPI();
 const totalBooksEl = document.getElementById('total-books');
 const wishlistCountEl = document.getElementById('wishlist-count');
 const cartCountEl = document.getElementById('cart-count');
@@ -20,11 +25,7 @@ async function initHero() {
      const randomBook = books[Math.floor(Math.random() * books.length)];
     heroBook(randomBook);
 };
-async function getDataFromAPI(params) {
-  const data = await getBooks();
-  return data;
-}
-const dataFromAPI = await getDataFromAPI();
+
 function heroBook(randomBook){
    const heroContainer = document.createElement('div');
    heroContainer.className = 'hero-book-card';
@@ -69,6 +70,7 @@ searchBtn.addEventListener('click', (event) => {
 });
 //Creating The feature books funcionality
 function displayFeaturedBooks(){
+   if (!dataFromAPI || dataFromAPI.length === 0) return []; 
   let arr = [];
   while(arr.length < 8){
     let arrData = dataFromAPI[Math.floor(Math.random() * dataFromAPI.length)];
