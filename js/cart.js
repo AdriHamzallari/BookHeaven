@@ -60,13 +60,14 @@ cartGrid.addEventListener('click', (e) => {
 
 //Modal
 const modal = document.getElementById('checkout-modal');
-const openBtn = document.querySelector('.checkout-btn');
 const closeBtn = document.getElementById('close-modal');
 const cancleBtn = document.getElementById('cancel-purchase');
 const confirmPurch = document.getElementById('confirm-purchase');
 
-if (openBtn) openBtn.addEventListener('click', () => {
-  modal.classList.add('active');
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('checkout-btn')) {
+        modal.classList.add('active');
+    }
 });
 closeBtn.addEventListener('click', () => {
   modal.classList.remove('active');
@@ -76,14 +77,14 @@ cancleBtn.addEventListener('click', () => {
 });
 //Chechkout
 confirmPurch.addEventListener('click', () => {
+    const freshCart = JSON.parse(localStorage.getItem('userCart')) || [];
     let libraryData = JSON.parse(localStorage.getItem('userLibrary')) || [];
-    libraryData.push(...cartItems);
+    libraryData.push(...freshCart); 
     localStorage.setItem('userLibrary', JSON.stringify(libraryData));
     localStorage.removeItem('userCart');
     modal.classList.remove('active');
     window.location.href = 'library.html';
-    
-})
+});
 function syncNavbarBadge() {
     const cart = JSON.parse(localStorage.getItem('userCart')) || [];
     const badge = document.querySelector('.cart-badge');
